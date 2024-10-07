@@ -1,4 +1,4 @@
-import type { BgType } from '../../src/types'
+import type { BgType } from '#types.ts'
 
 type BackgroundBase64 = Record<BgType, string>
 

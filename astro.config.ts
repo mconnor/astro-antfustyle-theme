@@ -6,7 +6,7 @@ import astroExpressiveCode from 'astro-expressive-code'
 import mdx from '@astrojs/mdx'
 
 import { remarkPlugins, rehypePlugins } from './plugins'
-import { SITE } from './src/config'
+import { SITE } from '#config.ts'
 
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({

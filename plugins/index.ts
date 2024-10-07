@@ -13,7 +13,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 
-import { FEATURES } from '../src/config'
+import { FEATURES } from '#config.ts'
 import type { RemarkPlugins, RehypePlugins } from 'astro'
 
 export const remarkPlugins: RemarkPlugins = [

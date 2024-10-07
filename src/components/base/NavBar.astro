@@ -1,16 +1,16 @@
 ---
-import Link from '~/components/base/Link.astro'
-import LogoButton from '~/components/widgets/LogoButton.astro'
-import ToTopButton from '~/components/widgets/ToTopButton.astro'
-import ThemeSwitch from '~/components/widgets/ThemeSwitch.astro'
-import SearchSwitch from '~/components/widgets/SearchSwitch.astro'
+import Link from '#components/base/Link.astro'
+import LogoButton from '#components/widgets/LogoButton.astro'
+import ToTopButton from '#components/widgets/ToTopButton.astro'
+import ThemeSwitch from '#components/widgets/ThemeSwitch.astro'
+import SearchSwitch from '#components/widgets/SearchSwitch.astro'
 
-import { UI } from '~/config'
+import { UI } from '#config.ts'
 import {
   ensureTrailingSlash,
   getUrl,
   validateNavBarLayout,
-} from '~/utils/common-utils'
+} from '#utils/common-utils.ts'
 
 const { navBarLayout } = UI
 const { left, right } = navBarLayout

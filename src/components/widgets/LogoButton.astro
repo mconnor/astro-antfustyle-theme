@@ -1,7 +1,7 @@
 ---
-import Link from '~/components/base/Link.astro'
-import { getUrl } from '~/utils/common-utils'
-import { SITE } from '~/config'
+import Link from '#components/base/Link.astro'
+import { getUrl } from '#utils/common-utils.ts'
+import { SITE } from '#config.ts'
 
 const title = `${SITE.author} @ ${new URL(SITE.website).hostname}`
 ---

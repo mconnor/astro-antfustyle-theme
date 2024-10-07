@@ -1,5 +1,5 @@
 import type { MarkdownHeading } from 'astro'
-import type { HeadingLevel } from '~/types'
+import type { HeadingLevel } from '#types.ts'
 
 export interface TocHeading extends MarkdownHeading {
   children: TocHeading[]

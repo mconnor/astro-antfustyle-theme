@@ -35,7 +35,7 @@ If your logo includes black and white, you may need to adjust for theme changes 
 <path class="dark:filter-invert-100" ...></path>
 ```
 
-Further customize your logo through the CSS within the `<style>` section of the component, such as adjusting opacity, scaling, or adding animations. 
+Further customize your logo through the CSS within the `<style>` section of the component, such as adjusting opacity, scaling, or adding animations.
 
 The existing grow keyframe animation, applied to the `draw` class, can be modified or removed as needed. For tips on animating SVGs, see [Animated SVG Logo](https://antfu.me/posts/animated-svg-logo).
 
@@ -68,7 +68,7 @@ You may need to adjust the SVG element's `width`, `height`, and `viewBox` attrib
 :::
 
 > [!important]- Adjust Black Elements in Your Logo
-> 
+>
 > Since the [theme’s OG Images](https://astro-antfustyle-theme.vercel.app/blog/about-open-graph-images/#template-for-auto-generated-og-images) use a black background, modify any pure black elements in your logo to white for better visibility.
 
 ## Replacing the Website Icon
@@ -144,7 +144,7 @@ If you don't need PWA support, you can delete `manifest.webmanifest.js`, `icon-1
 >
 > If you use Real Favicon Generator, rename `android-chrome-192x192.png` to `icon-192.png` and copy `android-chrome-512x512.png` twice, renaming one to `icon-512.png` and the other to `icon-mask.png`.
 >
-> Check the `icon-mask.png` with [maskable.app](https://maskable.app/) to ensure it meets the requirements for [maskable icons](https://css-tricks.com/maskable-icons-android-adaptive-icons-for-your-pwa/). It should have bigger paddings around the icon so it can be cropped by the launcher to fit its design. The safe zone is a central circle of 409×409. 
+> Check the `icon-mask.png` with [maskable.app](https://maskable.app/) to ensure it meets the requirements for [maskable icons](https://css-tricks.com/maskable-icons-android-adaptive-icons-for-your-pwa/). It should have bigger paddings around the icon so it can be cropped by the launcher to fit its design. The safe zone is a central circle of 409×409.
 
 ## Customizing Website Styles
 
@@ -183,7 +183,7 @@ For example, adjusting the `max-width` of prose content:
 .prose {
   // Write native CSS
   max-width: 70ch;
-  
+
   // Or use UnoCSS utility classes
   --uno: 'max-w-[70ch]'
 }
@@ -205,7 +205,7 @@ import '~/styles/your.css'
 
 For example, changing the font of group titles on the `/projects` page:
 
-```astro title='src/components/base/Categorizer.astro' ins="custom-class" 
+```astro title='src/components/base/Categorizer.astro' ins="custom-class"
 ...
 
 <div ...
@@ -237,7 +237,7 @@ For example, changing the font of group titles on the `/projects` page:
 :::
 
 > [!tip]- Additional Style Modification Tips
-> 
+>
 > - Avoid modifying the core stylesheets or component `<style>` sections directly for easier updates, as future theme versions may bring changes.
 > - Create a new `src/styles/your.css` file and override styles using class selectors.
 > - For details on style application precedence in Astro, refer to [Astro - CSS & Styling - Cascading Order](https://docs.astro.build/en/guides/styling/#cascading-order). If your styles don't apply, check for [CSS specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) and try using `!important` as needed.
@@ -276,7 +276,7 @@ You can directly modify the `src/components/base/Footer.astro` file. For instanc
 ```astro title='src/components/base/Footer.astro' ins={14-21} collapse={1-8,24-34}
 ---
 import Link from './Link.astro'
-import { SITE } from '~/config'
+import { SITE } from '#config.ts'
 
 const currentYear = new Date().getFullYear()
 
@@ -322,7 +322,7 @@ Finally, you may want to:
 
 - Delete the `.github` directory (for theme workflows and templates).
 - Clean up `src/content/` and `src/assets/` directories。
-- Check `.vscode/settings.json` for adjustments.  
+- Check `.vscode/settings.json` for adjustments.
 - Rewrite `README.md`.
 
 This is a general overview of what you can customize in the project. If you're proficient with code, there's even more you can personalize!

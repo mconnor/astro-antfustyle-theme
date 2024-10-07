@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '~/layouts/BaseLayout.astro'
-import StandardLayout from '~/layouts/StandardLayout.astro'
-import Toc from '~/components/toc/Toc.astro'
-import ShareLink from '~/components/widgets/ShareLink.astro'
-import Warning from '~/components/base/Warning.astro'
-import { formatDate } from '~/utils/datetime-utils'
-import { getFilteredPosts } from '~/utils/post-utils'
-import { FEATURES } from '~/config'
+import BaseLayout from '#layouts/BaseLayout.astro'
+import StandardLayout from '#layouts/StandardLayout.astro'
+import Toc from '#components/toc/Toc.astro'
+import ShareLink from '#components/widgets/ShareLink.astro'
+import Warning from '#components/base/Warning.astro'
+import { formatDate } from '#utils/datetime-utils.ts'
+import { getFilteredPosts } from '#utils/post-utils.ts'
+import { FEATURES } from '#config.ts'
 
 export async function getStaticPaths() {
   const posts = await getFilteredPosts('blog')

@@ -1,11 +1,11 @@
 ---
-import TocItem from '~/components/toc/TocItem.astro'
-import { slug } from '~/utils/common-utils'
-import { generateToc } from '~/utils/toc-utils'
-import { FEATURES } from '~/config'
+import TocItem from '#components/toc/TocItem.astro'
+import { slug } from '#utils/common-utils.ts'
+import { generateToc } from '#utils/toc-utils.ts'
+import { FEATURES } from '#config.ts'
 
 import type { MarkdownHeading } from 'astro'
-import type { HeadingLevel } from '~/types'
+import type { HeadingLevel } from '#types.ts'
 
 interface Props {
   headings?: MarkdownHeading[]

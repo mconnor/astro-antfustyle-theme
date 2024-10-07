@@ -54,7 +54,7 @@ Aliases work in files processed by Vite and TypeScript under `src/`, but not in 
 **Example:**
 
 ```typescript title='src/components/MyComponent.tsx'
-import { formatDate } from '~/utils/helpers';
+import { formatDate } from '#utils/helpers';
 
 function MyComponent() {
   return <div>{formatDate(new Date())}</div>;
@@ -74,7 +74,7 @@ This theme has [@unocss/preset-icons](https://www.npmjs.com/package/@unocss/pres
 
 You can explore more available icon sets on [icon-sets.iconify.design](https://icon-sets.iconify.design/). Once you've found the desired icon, select it, then copy the UnoCSS icon name from the "Icon" dropdown.
 
-For more details on usage, please refer to the [UnoCSS - Icons preset](https://unocss.dev/presets/icons#icons-preset). 
+For more details on usage, please refer to the [UnoCSS - Icons preset](https://unocss.dev/presets/icons#icons-preset).
 
 ### Post Date Format
 
@@ -94,7 +94,7 @@ Currently, backgrounds are not supported for pages at the `/blog/[slug]` path. I
   ogImage={frontmatter.ogImage}
   {pubDate}
   {lastModDate}
-  bgType='plum'  // 'dot', 'rose', 'particle'  
+  bgType='plum'  // 'dot', 'rose', 'particle'
 >
   ...
 </BaseLayout>
@@ -110,7 +110,7 @@ Additionally, Pagefind only works after the site has been fully built. You can t
 
 ### Image Zoom
 
-The theme uses :link[medium-zoom]{id=francoischalifour/medium-zoom} to zoom images that match the `.prose img:not(.no-zoom)` selector. To disable zoom for a specific image, add the `no-zoom` class. 
+The theme uses :link[medium-zoom]{id=francoischalifour/medium-zoom} to zoom images that match the `.prose img:not(.no-zoom)` selector. To disable zoom for a specific image, add the `no-zoom` class.
 
 Configuration can be done in `src/layouts/BaseLayout.astro`.
 

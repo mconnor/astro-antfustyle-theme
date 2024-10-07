@@ -4,13 +4,13 @@ import sharp from 'sharp'
 import { basename, dirname } from 'node:path'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
-import { unescapeHTML, checkFileExistsInDir } from '../src/utils/common-utils'
-import { getCurrentFormattedTime } from '../src/utils/datetime-utils'
+import { unescapeHTML, checkFileExistsInDir } from '#utils/common-utils.ts'
+import { getCurrentFormattedTime } from '#utils/datetime-utils.ts'
 import { ogImageMarkup } from './og-template/markup'
-import { FEATURES } from '../src/config'
+import { FEATURES } from '#config.ts'
 
 import type { SatoriOptions } from 'satori'
-import type { BgType } from '../src/types'
+import type { BgType } from '#types.ts'
 
 const Inter = readFileSync('plugins/og-template/Inter-Regular-24pt.ttf')
 

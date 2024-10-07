@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss'
-import { SITE } from '~/config'
-import { getUrl } from '~/utils/common-utils'
+import { SITE } from '#config.ts'
+import { getUrl } from '#utils/common-utils.ts'
 
 export async function GET() {
   const blogItems = Object.values(

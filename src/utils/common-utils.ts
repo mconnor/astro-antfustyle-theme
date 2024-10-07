@@ -3,8 +3,8 @@ import { join } from 'node:path'
 import { existsSync } from 'node:fs'
 
 import type { html } from 'satori-html'
-import type { ProjectGroupsSchema } from '~/content/schema'
-import type { NavBarLayout } from '~/types'
+import type { ProjectGroupsSchema } from '#content/schema.ts'
+import type { NavBarLayout } from '#types.ts'
 
 /**
  * Converts a given text into a URL-friendly slug.

@@ -10,7 +10,7 @@ import {
 
 import projecstData from './src/content/projects/data.json'
 import { extractIconsStartingWithI } from './src/utils/common-utils'
-import { UI } from './src/config'
+import { UI } from '#config.ts'
 
 import type {
   IconNavItem,
