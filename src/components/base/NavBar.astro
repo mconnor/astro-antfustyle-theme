@@ -1,0 +1,200 @@
+---
+import Link from '~/components/base/Link.astro'
+import LogoButton from '~/components/widgets/LogoButton.astro'
+import ToTopButton from '~/components/widgets/ToTopButton.astro'
+import ThemeSwitch from '~/components/widgets/ThemeSwitch.astro'
+import SearchSwitch from '~/components/widgets/SearchSwitch.astro'
+
+import { UI } from '~/config'
+import {
+  ensureTrailingSlash,
+  getUrl,
+  validateNavBarLayout,
+} from '~/utils/common-utils'
+
+const { navBarLayout } = UI
+const { left, right } = navBarLayout
+
+validateNavBarLayout(navBarLayout)
+---
+
+<header class="flex items-center gap-[1.2rem] p-8 lt-md:(px-6 gap-none)">
+  <LogoButton />
+  <nav
+    class={`flex items-center gap-[1.2rem] w-full lt-md:justify-end
+      ${left.length !== 0 && right.length !== 0 ? 'justify-between' : 'justify-end'}`}
+    aria-label="Main menu"
+  >
+    {
+      left.length !== 0 && (
+        <div class="grid grid-auto-flow-col gap-[1.2rem] print:op-0">
+          {UI.navBarLayout.left.map((key) =>
+            key === 'searchButton' ? (
+              <SearchSwitch />
+            ) : key === 'themeButton' ? (
+              <ThemeSwitch />
+            ) : key === 'rssLink' ? (
+              <Link
+                class="lt-md:hidden op-transition"
+                href={getUrl('/rss.xml')}
+                title="RSS Feed"
+                external={true}
+              >
+                <div class="i-lucide-rss" />
+              </Link>
+            ) : key === 'internalNavs' ? (
+              UI[key].map((item) => (
+                <Link
+                  class={`${
+                    item.displayMode === 'iconHiddenOnMobile' ||
+                    item.displayMode === 'textHiddenOnMobile'
+                      ? 'lt-md:hidden'
+                      : ''
+                  } op-transition`}
+                  href={getUrl(ensureTrailingSlash(item.path))}
+                  title={item.title}
+                  aria-current={
+                    Astro.url.pathname ===
+                    getUrl(ensureTrailingSlash(item.path))
+                      ? 'page'
+                      : false
+                  }
+                >
+                  {item.displayMode === 'textToIconOnMobile' && (
+                    <>
+                      <span class="lt-md:hidden">{item.text}</span>
+                      <div class={`md:hidden ${item.icon}`} />
+                    </>
+                  )}
+                  {(item.displayMode === 'alwaysIcon' ||
+                    item.displayMode === 'iconHiddenOnMobile') && (
+                    <div class={item.icon} />
+                  )}
+                  {(item.displayMode === 'alwaysText' ||
+                    item.displayMode === 'textHiddenOnMobile') && (
+                    <span>{item.text}</span>
+                  )}
+                </Link>
+              ))
+            ) : (
+              UI[key].map((item) => (
+                <Link
+                  class={`${
+                    item.displayMode === 'iconHiddenOnMobile' ||
+                    item.displayMode === 'textHiddenOnMobile'
+                      ? 'lt-md:hidden'
+                      : ''
+                  } op-transition`}
+                  href={item.link}
+                  title={item.title}
+                  external={true}
+                >
+                  {item.displayMode === 'textToIconOnMobile' && (
+                    <>
+                      <span class="lt-md:hidden">{item.text}</span>
+                      <div class={`md:hidden ${item.icon}`} />
+                    </>
+                  )}
+                  {(item.displayMode === 'alwaysIcon' ||
+                    item.displayMode === 'iconHiddenOnMobile') && (
+                    <div class={item.icon} />
+                  )}
+                  {(item.displayMode === 'alwaysText' ||
+                    item.displayMode === 'textHiddenOnMobile') && (
+                    <span>{item.text}</span>
+                  )}
+                </Link>
+              ))
+            )
+          )}
+        </div>
+      )
+    }
+    {
+      right.length !== 0 && (
+        <div class="grid grid-auto-flow-col gap-[1.2rem] print:op-0">
+          {UI.navBarLayout.right.map((key) =>
+            key === 'searchButton' ? (
+              <SearchSwitch />
+            ) : key === 'themeButton' ? (
+              <ThemeSwitch />
+            ) : key === 'rssLink' ? (
+              <Link
+                class="op-transition"
+                href={getUrl('/rss.xml')}
+                title="RSS Feed"
+                external={true}
+              >
+                <div class="i-lucide-rss" />
+              </Link>
+            ) : key === 'internalNavs' ? (
+              UI[key].map((item) => (
+                <Link
+                  class={`${
+                    item.displayMode === 'iconHiddenOnMobile' ||
+                    item.displayMode === 'textHiddenOnMobile'
+                      ? 'lt-md:hidden'
+                      : ''
+                  } op-transition`}
+                  href={getUrl(ensureTrailingSlash(item.path))}
+                  title={item.title}
+                  aria-current={
+                    Astro.url.pathname ===
+                    getUrl(ensureTrailingSlash(item.path))
+                      ? 'page'
+                      : false
+                  }
+                >
+                  {item.displayMode === 'textToIconOnMobile' && (
+                    <>
+                      <span class="lt-md:hidden">{item.text}</span>
+                      <div class={`${item.icon} md:hidden`} />
+                    </>
+                  )}
+                  {(item.displayMode === 'alwaysIcon' ||
+                    item.displayMode === 'iconHiddenOnMobile') && (
+                    <div class={item.icon} />
+                  )}
+                  {(item.displayMode === 'alwaysText' ||
+                    item.displayMode === 'textHiddenOnMobile') && (
+                    <span>{item.text}</span>
+                  )}
+                </Link>
+              ))
+            ) : (
+              UI[key].map((item) => (
+                <Link
+                  class={`${
+                    item.displayMode === 'iconHiddenOnMobile' ||
+                    item.displayMode === 'textHiddenOnMobile'
+                      ? 'lt-md:hidden'
+                      : ''
+                  } op-transition`}
+                  href={item.link}
+                  title={item.title}
+                  external={true}
+                >
+                  {item.displayMode === 'textToIconOnMobile' && (
+                    <>
+                      <span class="lt-md:hidden">{item.text}</span>
+                      <div class={`${item.icon} md:hidden`} />
+                    </>
+                  )}
+                  {(item.displayMode === 'alwaysIcon' ||
+                    item.displayMode === 'iconHiddenOnMobile') && (
+                    <div class={item.icon} />
+                  )}
+                  {(item.displayMode === 'alwaysText' ||
+                    item.displayMode === 'textHiddenOnMobile') && (
+                    <span>{item.text}</span>
+                  )}
+                </Link>
+              ))
+            )
+          )}
+        </div>
+      )
+    }
+  </nav>
+  <ToTopButton />
+</header>

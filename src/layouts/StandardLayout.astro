@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string
+  subtitle?: string
+}
+
+const { title, subtitle } = Astro.props
+---
+
+<header class="prose m-auto mb-8">
+  <h1
+    class="slide-enter-50 mb-0"
+    data-pagefind-body
+    data-pagefind-weight="10"
+    data-pagefind-meta="title"
+  >
+    {title}
+  </h1>
+  {
+    subtitle && (
+      <p class="animate-none mt--4! mb-8! op-50! italic">{subtitle}</p>
+    )
+  }
+  <slot name="head" />
+</header>
+<article data-pagefind-body class="prose slide-enter-content m-auto">
+  <slot />
+</article>

@@ -1,0 +1,92 @@
+{
+  "name": "astor-antfustyle-theme",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "astro": "astro",
+    "sync": "astro sync",
+    "dev": "astro dev --open",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier . --check --ignore-unknown",
+    "format:write": "prettier . --write --ignore-unknown --cache",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0 --cache",
+    "lint:fix": "eslint . --fix --cache",
+    "toolbar:on": "astro preferences enable devToolbar",
+    "toolbar:off": "astro preferences disable devToolbar",
+    "prepare": "simple-git-hooks",
+    "postbuild": "pagefind --site dist && del-cli \"dist/pagefind/*ui*\""
+  },
+  "dependencies": {
+    "astro": "4.15.11",
+    "nprogress": "^0.2.0"
+  },
+  "devDependencies": {
+    "@ascorbic/feed-loader": "^1.0.1",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/markdown-remark": "^5.2.0",
+    "@astrojs/mdx": "^3.1.7",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "^3.2.0",
+    "@eslint/js": "^9.12.0",
+    "@expressive-code/plugin-collapsible-sections": "^0.37.0",
+    "@expressive-code/plugin-line-numbers": "^0.37.0",
+    "@iconify/json": "^2.2.256",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^22.7.0",
+    "@types/nprogress": "^0.2.3",
+    "@types/p5": "^1.7.6",
+    "@typescript-eslint/parser": "^8.8.0",
+    "@unocss/reset": "^0.63.3",
+    "astro-expressive-code": "^0.37.0",
+    "astro-robots-txt": "^1.0.0",
+    "chalk": "^5.3.0",
+    "dayjs": "^1.11.13",
+    "del-cli": "^5.1.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.2.4",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "globals": "^15.10.0",
+    "hastscript": "^9.0.0",
+    "html-entities": "^2.5.2",
+    "lint-staged": "^15.2.10",
+    "mdast-util-directive": "^3.0.0",
+    "mdast-util-to-string": "^4.0.0",
+    "medium-zoom": "^1.1.0",
+    "p5": "^1.11.0",
+    "pagefind": "^1.1.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.14.0",
+    "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-callouts": "^1.0.3",
+    "rehype-external-links": "^3.0.0",
+    "rehype-katex": "^7.0.1",
+    "remark-directive": "^3.0.0",
+    "remark-imgattr": "^1.0.5",
+    "remark-math": "^6.0.0",
+    "satori": "^0.11.1",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.33.5",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0",
+    "unist-util-visit": "^5.0.0",
+    "unocss": "^0.63.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint"
+    ]
+  },
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  }
+}

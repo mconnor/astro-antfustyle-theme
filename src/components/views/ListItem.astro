@@ -1,0 +1,92 @@
+---
+import Link from '~/components/base/Link.astro'
+import { getUrl } from '~/utils/common-utils'
+import { formatDate } from '~/utils/datetime-utils'
+
+interface Props {
+  idx: number
+  collectionType: string
+  redirect?: string
+  postSlug?: string
+  title: string
+  video?: boolean
+  radio?: boolean
+  date: string | Date
+  minutesRead?: number
+  platform?: string
+}
+
+const {
+  idx,
+  redirect,
+  collectionType,
+  postSlug,
+  title,
+  video,
+  radio,
+  date,
+  minutesRead,
+  platform,
+} = Astro.props
+---
+
+<div
+  class="slide-enter"
+  style={{
+    '--enter-stage': idx,
+    '--enter-step': '60ms',
+  }}
+>
+  <Link
+    class="block border-b-none! mb-6 mt-2 op-transition!"
+    href={redirect ?? getUrl(`/${collectionType}/${postSlug}/`)}
+    external={redirect ? true : false}
+  >
+    <li
+      u-flex="~ items-center gap-2 lt-md:(col items-start)"
+      class="no-underline"
+    >
+      <div class="flex gap-2 text-lg leading-1.2em">
+        <span class="align-middle">{title}</span>
+        {
+          redirect && (
+            <span
+              u-i-carbon-arrow-up-right
+              class="flex-none ml--1.5 op-50 align-middle text-xs"
+              title="External link"
+            />
+          )
+        }
+      </div>
+      <div flex="~ gap-2 items-center">
+        {
+          video && (
+            <span
+              u-i-ri-film-line
+              class="flex-none op-50 align-middle"
+              title="Provided in video"
+            />
+          )
+        }
+        {
+          radio && (
+            <span
+              u-i-ri-radio-line
+              class="flex-none op-50 align-middle"
+              title="Provided in radio"
+            />
+          )
+        }
+        <span class="op-50 text-sm ws-nowrap">
+          {formatDate(date, false)}
+        </span>
+        {
+          typeof minutesRead === 'number' && minutesRead > 0 && (
+            <span class="op-40 text-sm ws-nowrap">· {minutesRead} min</span>
+          )
+        }
+        {platform && <span class="op-40 text-sm ws-nowrap">· {platform}</span>}
+      </div>
+    </li>
+  </Link>
+</div>

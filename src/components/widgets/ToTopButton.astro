@@ -1,0 +1,49 @@
+---
+
+---
+
+<button
+  id="to-top-button"
+  class="z-300 fixed right-5 bottom-3
+    w-10 h-10 rounded-full
+    op-0 pointer-events-none
+    transition duration-300
+    hover:(op-100! bg-hex-8883!) print:hidden"
+  title="Scroll to top"
+>
+  <div u-i-ri-arrow-up-line></div>
+</button>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const handleClick = (event: MouseEvent) => {
+      event.preventDefault()
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
+
+    const toTopButton = document.getElementById('to-top-button')
+    toTopButton?.addEventListener('click', (event) => handleClick(event))
+  })
+
+  const handleScroll = () => {
+    const scrollThreshold = 300
+    const toTopButton = document.getElementById('to-top-button')
+
+    if (toTopButton) {
+      const scrollY = window.scrollY || document.documentElement.scrollTop
+
+      if (scrollY <= scrollThreshold) {
+        toTopButton.style.opacity = '0'
+        toTopButton.style.pointerEvents = 'none'
+      } else {
+        toTopButton.style.opacity = '0.3'
+        toTopButton.style.pointerEvents = 'auto'
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll)
+</script>

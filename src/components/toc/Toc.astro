@@ -1,0 +1,82 @@
+---
+import TocItem from '~/components/toc/TocItem.astro'
+import { slug } from '~/utils/common-utils'
+import { generateToc } from '~/utils/toc-utils'
+import { FEATURES } from '~/config'
+
+import type { MarkdownHeading } from 'astro'
+import type { HeadingLevel } from '~/types'
+
+interface Props {
+  headings?: MarkdownHeading[]
+  category?: string[]
+  years?: string[]
+  style?: string
+}
+
+const { headings = [], category = [], years = [], style } = Astro.props
+
+let minHeadingLevel: HeadingLevel = 2
+let maxHeadingLevel: HeadingLevel = 4
+let displayPosition = 'left'
+let displayMode = 'hover'
+
+if (Array.isArray(FEATURES.toc) && FEATURES.toc[0]) {
+  ;({ minHeadingLevel, maxHeadingLevel, displayPosition, displayMode } =
+    FEATURES.toc[1])
+}
+
+const specHeadings = generateToc(headings, minHeadingLevel, maxHeadingLevel)
+---
+
+<aside class={`${displayMode === 'always' ? 'toc-always-on' : ''}`}>
+  <nav
+    class={`table-of-contents ${displayPosition === 'right' ? 'table-of-contents-right' : ''}`}
+    {style}
+  >
+    <div class="table-of-contents-anchor">
+      {
+        displayPosition === 'left' && (
+          <div
+            u-i-ri-menu-2-fill
+            class={`${displayMode === 'always' ? 'op-60' : ''}`}
+          />
+        )
+      }
+      {
+        displayPosition === 'right' && (
+          <div
+            u-i-ri-menu-3-fill
+            class={`${displayMode === 'always' ? 'op-60' : ''}`}
+          />
+        )
+      }
+    </div>
+    <ul>
+      {
+        !!specHeadings.length &&
+          specHeadings.map((heading) => <TocItem {heading} />)
+      }
+      {
+        !!category.length &&
+          category.map((item) => (
+            <li>
+              <a href={`#${slug(item)}`} aria-label={item}>
+                {item}
+              </a>
+            </li>
+          ))
+      }
+      {
+        !!years.length &&
+          years.map((item) => (
+            <li>
+              <a href={`#${slug(item)}`} aria-label={item}>
+                {item}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </nav>
+</aside>
