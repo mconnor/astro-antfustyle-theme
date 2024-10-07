@@ -4,6 +4,9 @@
   "type": "module",
   "private": true,
   "license": "MIT",
+  "imports": {
+    "#*": "./src/*"
+  },
   "scripts": {
     "astro": "astro",
     "sync": "astro sync",
@@ -35,6 +38,7 @@
     "@expressive-code/plugin-collapsible-sections": "^0.37.0",
     "@expressive-code/plugin-line-numbers": "^0.37.0",
     "@iconify/json": "^2.2.257",
+    "@types/eslint__js": "^8.42.3",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.7.4",
     "@types/nprogress": "^0.2.3",
