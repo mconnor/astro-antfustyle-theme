@@ -2,3 +2,9 @@ pnpm-lock.yaml
 SearchSwitch.astro
 GroupItem.astro
 *.md
+.astro/
+.github/
+dist/
+# environment variables
+.eslintcache
+node_modules/

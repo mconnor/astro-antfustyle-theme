@@ -74,8 +74,6 @@ function remarkGenerateOgImage() {
 
   const { authorOrBrand, fallbackTitle, fallbackBgType } = ogImage[1]
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
   return async (_tree, file) => {
     // regenerate fallback
     if (!checkFileExistsInDir('public/og-images', 'og-image.png')) {
@@ -99,7 +97,7 @@ function remarkGenerateOgImage() {
 
     // check if it need to be skipped
     const title = file.data.astro.frontmatter.title
-    if (!title || !title.trim().length) return
+    if (!title?.trim().length) return
     const ogImage = file.data.astro.frontmatter.ogImage
     if (ogImage === false) return
 

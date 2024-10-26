@@ -8,8 +8,8 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
-import projecstData from './src/content/projects/data.json'
-import { extractIconsStartingWithI } from './src/utils/common-utils'
+import projecstData from '#content/projects/data.json'
+import { extractIconsStartingWithI } from '#utils/common-utils.ts'
 import { UI } from '#config.ts'
 
 import type {
@@ -17,7 +17,7 @@ import type {
   ResponsiveNavItem,
   IconSocialItem,
   ResponsiveSocialItem,
-} from './src/types'
+} from '#types.ts'
 
 const { internalNavs, socialLinks } = UI
 

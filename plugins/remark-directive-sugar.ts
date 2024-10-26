@@ -188,7 +188,7 @@ function remarkDirectiveSugar() {
 
           // check type
           if (style && (LINK_STYLE as readonly string[]).includes(style)) {
-            resolvedStyle = style as typeof resolvedStyle
+            resolvedStyle = style
           } else if (
             style &&
             !(LINK_STYLE as readonly string[]).includes(style)
@@ -206,7 +206,7 @@ function remarkDirectiveSugar() {
               node
             )
           } else if (tab) {
-            const match = tab.match(TAB_ORG_REGEXP)
+            const match = TAB_ORG_REGEXP.exec(tab)
             if (match) {
               isOrg = true
               resolvedTab = match[1]
@@ -224,7 +224,7 @@ function remarkDirectiveSugar() {
             resolvedStyle = resolvedStyle || 'square'
           } else if (id) {
             // github scope
-            if (id.match(GITHUB_USERNAME_REGEXP)) {
+            if (GITHUB_USERNAME_REGEXP.exec(id)) {
               resolvedLink =
                 link ||
                 (resolvedTab && isOrg
@@ -236,8 +236,8 @@ function remarkDirectiveSugar() {
 
               resolvedStyle = resolvedStyle || 'rounded'
               resolvedText = resolvedText || id.substring(1)
-            } else if (id.match(GITHUB_REPO_REGEXP)) {
-              const match = id.match(GITHUB_REPO_REGEXP)
+            } else if (GITHUB_REPO_REGEXP.exec(id)) {
+              const match = GITHUB_REPO_REGEXP.exec(id)
               resolvedLink = link || `https://github.com/${id}`
 
               resolvedImageUrl =
@@ -367,9 +367,9 @@ function remarkDirectiveSugar() {
               value: resolvedText,
             },
           ]
-        } else if (node.name.match(BADGE_REGEXP)) {
+        } else if (BADGE_REGEXP.exec(node.name)) {
           /* :badge-* */
-          const match = node.name.match(BADGE_REGEXP)
+          const match = BADGE_REGEXP.exec(node.name)
           if (match && VALID_BADGES.has(match[1])) {
             let resolvedColor = ''
             let resolvedColorLight = ''

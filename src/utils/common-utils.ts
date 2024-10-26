@@ -22,7 +22,7 @@ export function extractIconsStartingWithI(data: ProjectGroupsSchema): string[] {
   for (const key in data) {
     const projects = data[key]
     projects.forEach((project) => {
-      if (project.icon && project.icon.startsWith('i')) {
+      if (project.icon?.startsWith('i')) {
         icons.push(project.icon)
       }
     })

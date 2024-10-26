@@ -77,7 +77,7 @@ function remarkImageContainer() {
         children.push(figcaptionNode)
       } else if (node.name === 'image-a') {
         /* image-a */
-        if (!node.attributes || !node.attributes.href)
+        if (!node.attributes?.href)
           file.fail(
             'Unexpectedly missing `href` in the `image-a` directive.',
             node
@@ -89,9 +89,9 @@ function remarkImageContainer() {
         data.hName = 'a'
         const defaultAttrs = { target: '_blank' }
         data.hProperties = { ...defaultAttrs, ...attributes }
-      } else if (node.name.match(IMAGE_DIR_REGEXP)) {
+      } else if (IMAGE_DIR_REGEXP.exec(node.name)) {
         /* image-* */
-        const match = node.name.match(IMAGE_DIR_REGEXP)
+        const match = IMAGE_DIR_REGEXP.exec(node.name)
         if (match && VALID_TAGS_FOR_IMG.has(match[1])) {
           const data = node.data || (node.data = {})
           const attributes = node.attributes || {}
