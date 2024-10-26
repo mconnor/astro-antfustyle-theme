@@ -5,7 +5,7 @@
 /// <reference types="mdast-util-directive" />
 
 import type { MarkdownVFile } from '@astrojs/markdown-remark'
-import type { Paragraph, PhrasingContent,Root } from 'mdast'
+import type { Paragraph, PhrasingContent, Root } from 'mdast'
 import { visit } from 'unist-util-visit'
 
 const IMAGE_DIR_REGEXP = /^image-(.*)/

@@ -1,21 +1,15 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "."
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.astro",
-    "src/**/*.js",
-    "src/**/*.md",
-    "src/**/*.md/*.js",
-    "src/**/*.md/*.ts",
-    "*.config.mjs",
-    "*.config.ts"
-  ],
+  "include": ["."],
   "exclude": [
     "dist",
     ".local",
-    ".github"
+    ".github/",
+    ".astro/",
+    ".eslintcache",
+    ".tool-versions"
   ]
 }

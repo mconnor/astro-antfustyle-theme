@@ -7,11 +7,13 @@ import type { SatoriOptions } from 'satori'
 import satori from 'satori'
 import sharp from 'sharp'
 
-import { FEATURES } from '#config.ts'
-import type { BgType } from '#types.ts'
-import { checkFileExistsInDir,unescapeHTML } from '#utils/common-utils.ts'
-import { getCurrentFormattedTime } from '#utils/datetime-utils.ts'
-
+import { FEATURES } from '../src/config.ts'
+import type { BgType } from '../src/types.ts'
+import {
+  checkFileExistsInDir,
+  unescapeHTML,
+} from '../src/utils/common-utils.ts'
+import { getCurrentFormattedTime } from '../src/utils/datetime-utils.ts'
 import { ogImageMarkup } from './og-template/markup'
 
 const Inter = readFileSync('plugins/og-template/Inter-Regular-24pt.ttf')

@@ -1,5 +1,5 @@
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-import type { RehypePlugins,RemarkPlugins } from 'astro'
+import type { RehypePlugins, RemarkPlugins } from 'astro'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCallouts from 'rehype-callouts'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -50,7 +50,7 @@ export const rehypePlugins: RehypePlugins = [
     {
       target: '_blank',
       rel: 'noopener noreferrer',
-      // @ts-expect-error (import('hast').Element)
+
       properties: (node) => {
         let content = ''
         visit(node, 'text', (textNode) => {
@@ -68,7 +68,7 @@ export const rehypePlugins: RehypePlugins = [
     rehypeAutolinkHeadings,
     {
       behavior: 'append',
-      // @ts-expect-error (import('hast').Element)
+
       properties: (node) => {
         let content = ''
         visit(node, 'text', (textNode) => {

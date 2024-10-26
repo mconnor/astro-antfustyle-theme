@@ -8,13 +8,13 @@ share: true
 ogImage: true
 ---
 
-Opening this post suggests that you may already be using the [Astro AntfuStyle Theme](https://github.com/lin-stephanie/astro-antfustyle-theme) --- thank you for choosing it! 
+Opening this post suggests that you may already be using the [Astro AntfuStyle Theme](https://github.com/lin-stephanie/astro-antfustyle-theme) --- thank you for choosing it!
 
 This guide provides instructions on how to stay up-to-date with the latest theme versions and manage your project dependencies effectively. Let's dive into the steps!
 
 ## Updating to the Latest Theme Version
 
-If you've made significant changes to your project, syncing may not be straightforward. 
+If you've made significant changes to your project, syncing may not be straightforward.
 You may consider checking the [theme's changelog](https://astro-antfustyle-theme.vercel.app/changelog/) and manually updating each file selectively (this is the only option if you're not using Git). Alternatively, for a more efficient approach, you can follow the steps below.
 
 Before syncing, pay special attention  to directories or files you have customized or modified, such as: `src/content/`, `public/`, `src/config.ts`, `ec.config.mjs`, `src/pages/manifest.webmanifest.js`, and any new CSS files you've created for style modifications.
@@ -142,7 +142,7 @@ In addition to using `pnpm`, consider :link[Taze]{id=antfu-collective/taze style
 
 That's it! Keeping your project updated may seem like work initially, but it becomes easier over time. Plus, it's worth it to enjoy the new features and improvements with each update.
 
-If you encounter any issues, find errors, or see opportunities for improvement as you explore the theme, feel free to join the [discussion](https://github.com/lin-stephanie/astro-antfustyle-theme/discussions), or submit an [issue](https://github.com/lin-stephanie/astro-antfustyle-theme/issues) or [pull request](https://github.com/lin-stephanie/astro-antfustyle-theme/pulls). Your feedback is highly appreciated! 
+If you encounter any issues, find errors, or see opportunities for improvement as you explore the theme, feel free to join the [discussion](https://github.com/lin-stephanie/astro-antfustyle-theme/discussions), or submit an [issue](https://github.com/lin-stephanie/astro-antfustyle-theme/issues) or [pull request](https://github.com/lin-stephanie/astro-antfustyle-theme/pulls). Your feedback is highly appreciated!
 
 Happy coding, and may your projects continue to thrive! 🚀
 

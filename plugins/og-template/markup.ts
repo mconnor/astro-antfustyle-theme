@@ -1,30 +1,8 @@
 import { html } from 'satori-html'
 import backgroundBase64 from './base64'
-import type { BgType } from '#types.ts'
+import type { BgType } from '../../src/types.ts'
 
-export const ogImageMarkup = (
-  authorOrBrand: string,
-  title: string,
-  bgType: BgType
-) => {
-  if (!['plum', 'dot', 'rose', 'particle'].includes(bgType))
-    throw new Error(
-      "The value of 'bgType' must be one of the following: 'plum', 'dot', 'rose', 'particle'."
-    )
-
-  return html`<div
-    tw="relative flex justify-center items-center w-full h-full"
-    style="font-family: 'Inter'"
-  >
-    <img
-      tw="absolute inset-0 w-full h-full"
-      src=${backgroundBase64[bgType]}
-      alt="open graph"
-    />
-
-    <div tw="flex items-center justify-start w-full px-18" style="gap: 20px">
-      <div tw="self-start flex justify-center items-center">
-        <svg
+const MYSVG = `<svg
           xmlns="http://www.w3.org/2000/svg"
           width="7.5em"
           height="7.5em"
@@ -52,8 +30,30 @@ export const ogImageMarkup = (
               <stop offset="1" stop-color="#f041ff"></stop>
             </linearGradient>
           </defs>
-        </svg>
-      </div>
+        </svg>`
+
+export const ogImageMarkup = (
+  authorOrBrand: string,
+  title: string,
+  bgType: BgType
+) => {
+  // if (!['plum', 'dot', 'rose', 'particle'].includes(bgType))
+  //   throw new Error(
+  //     "The value of 'bgType' must be one of the following: 'plum', 'dot', 'rose', 'particle'."
+  //   )
+
+  return html`<div
+    tw="relative flex justify-center items-center w-full h-full"
+    style="font-family: 'Inter'"
+  >
+    <img
+      tw="absolute inset-0 w-full h-full"
+      src=${backgroundBase64[bgType]}
+      alt="open graph"
+    />
+
+    <div tw="flex items-center justify-start w-full px-18" style="gap: 20px">
+      <div tw="self-start flex justify-center items-center">${MYSVG}</div>
 
       <div tw="flex flex-col" style="gap: 10px">
         <div tw="text-[#858585] text-2.1rem">${authorOrBrand}</div>

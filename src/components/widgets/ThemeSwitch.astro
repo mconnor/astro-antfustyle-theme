@@ -80,8 +80,7 @@
       }
 
       const isAppearanceTransition =
-        // @ts-expect-error (View Transitions API)
-        document.startViewTransition &&
+        // document.startViewTransition &&
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
       if (!isAppearanceTransition) {

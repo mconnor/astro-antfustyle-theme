@@ -39,6 +39,7 @@
     "@expressive-code/plugin-collapsible-sections": "^0.37.1",
     "@expressive-code/plugin-line-numbers": "^0.37.1",
     "@iconify/json": "^2.2.264",
+    "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/mdast": "^4.0.4",
     "@types/node": "^22.8.1",

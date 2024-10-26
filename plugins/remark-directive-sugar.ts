@@ -26,10 +26,8 @@ const VIDEO_PLATFORMS: Record<string, (id: string) => string> = {
 
 /* link */
 const FAVICON_BASE_URL = 'https://favicon.yandex.net/favicon/'
-const GITHUB_USERNAME_REGEXP =
-  /^@[a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9]$/i
-const GITHUB_REPO_REGEXP =
-  /^@?([a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9])\/.*$/i
+const GITHUB_USERNAME_REGEXP = /^@[a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9]$/i
+const GITHUB_REPO_REGEXP = /^@?([a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9])\/.*$/i
 const LINK_STYLE = ['square', 'rounded', 'github'] as const
 const TAB_ORG_REGEXP = /^org-(\w+)$/
 const GITHUB_TAB = [
