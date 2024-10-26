@@ -1,5 +1,5 @@
-import { getCollection } from 'astro:content'
 import type { CollectionEntry, ContentCollectionKey } from 'astro:content'
+import { getCollection } from 'astro:content'
 
 /**
  * Retrieves filtered posts from the specified content collection.

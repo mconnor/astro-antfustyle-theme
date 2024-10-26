@@ -1,8 +1,9 @@
-import { decode } from 'html-entities'
-import { join } from 'node:path'
 import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 
+import { decode } from 'html-entities'
 import type { html } from 'satori-html'
+
 import type { ProjectGroupsSchema } from '#content/schema.ts'
 import type { NavBarLayout } from '#types.ts'
 

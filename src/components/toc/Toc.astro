@@ -21,7 +21,7 @@ let maxHeadingLevel: HeadingLevel = 4
 let displayPosition = 'left'
 let displayMode = 'hover'
 
-if (Array.isArray(FEATURES.toc) && FEATURES.toc[0]) {
+if (Array.isArray(FEATURES.toc) && FEATURES?.toc[0]) {
   ;({ minHeadingLevel, maxHeadingLevel, displayPosition, displayMode } =
     FEATURES.toc[1])
 }

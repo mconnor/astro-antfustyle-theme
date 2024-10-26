@@ -1,37 +1,28 @@
 import { z } from 'astro:content'
 
+const zDefaultStr = z.string().default('')
+const zFalse = z.boolean().default(false)
+
 /* Pages*/
 export const pageSchema = z.object({
-  title: z
-    .string()
-    .default('')
-    .describe(
-      'Sets the page title, formatted with `SITE.title` as `<pageTitle> - <siteTitle>` for metadata and automatic OG image generation. If undefined or empty, only `<siteTitle>` is displayed, and OG image generation is skipped.'
-    ),
-  subtitle: z
-    .string()
-    .default('')
-    .describe(
-      'Provides a page subtitle. If provided, it will be displayed below the title. If not needed, leave the field as an empty string or delete it.'
-    ),
-  description: z
-    .string()
-    .default('')
-    .describe(
-      'Provides a brief description, used in meta tags for SEO and sharing purposes. If not needed, leave the field as an empty string or delete it, and the `SITE.description` will be used directly.'
-    ),
+  title: zDefaultStr.describe(
+    'Sets the page title, formatted with `SITE.title` as `<pageTitle> - <siteTitle>` for metadata and automatic OG image generation. If undefined or empty, only `<siteTitle>` is displayed, and OG image generation is skipped.'
+  ),
+  subtitle: zDefaultStr.describe(
+    'Provides a page subtitle. If provided, it will be displayed below the title. If not needed, leave the field as an empty string or delete it.'
+  ),
+  description: zDefaultStr.describe(
+    'Provides a brief description, used in meta tags for SEO and sharing purposes. If not needed, leave the field as an empty string or delete it, and the `SITE.description` will be used directly.'
+  ),
   bgType: z
     .union([z.literal(false), z.enum(['plum', 'dot', 'rose', 'particle'])])
     .default(false)
     .describe(
       'Specifies whether to apply a background on this page and select its type. If not needed, delete the field or set to `false`.'
     ),
-  toc: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Controls whether the table of contents (TOC) is generated for the page.'
-    ),
+  toc: zFalse.describe(
+    'Controls whether the table of contents (TOC) is generated for the page.'
+  ),
   ogImage: z
     .union([z.string(), z.boolean()])
     .default(true)
@@ -48,24 +39,18 @@ export const postSchema = z.object({
     .string()
     .max(60)
     .describe(
-      "**Requirde**. Sets the post title, limited to **60 characters**. This follows Moz's recommendation, ensuring approximately 90% of titles display correctly in SERPs and preventing truncation on smaller screens or social platforms. [Learn more](https://moz.com/learn/seo/title-tag)."
+      "**Required**. Sets the post title, limited to **60 characters**. This follows Moz's recommendation, ensuring approximately 90% of titles display correctly in SERPs and preventing truncation on smaller screens or social platforms. [Learn more](https://moz.com/learn/seo/title-tag)."
     ),
-  subtitle: z
-    .string()
-    .default('')
-    .describe(
-      'Provides a post subtitle. If provided, it will be displayed below the title. If not needed, leave the field as an empty string or delete it.'
-    ),
-  description: z
-    .string()
-    .default('')
-    .describe(
-      'Provides a brief description, used in meta tags for SEO and sharing purposes. If not needed, leave the field as an empty string or delete it, and the `SITE.description` will be used directly.'
-    ),
+  subtitle: zDefaultStr.describe(
+    'Provides a post subtitle. If provided, it will be displayed below the title. If not needed, leave the field as an empty string or delete it.'
+  ),
+  description: zDefaultStr.describe(
+    'Provides a brief description, used in meta tags for SEO and sharing purposes. If not needed, leave the field as an empty string or delete it, and the `SITE.description` will be used directly.'
+  ),
   pubDate: z.coerce
     .date()
     .describe(
-      '**Requirde**. Specifies the publication date. See supported formats [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#examples).'
+      '**Required**. Specifies the publication date. See supported formats [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#examples).'
     ),
   lastModDate: z
     .union([z.coerce.date(), z.literal('')])
@@ -79,24 +64,15 @@ export const postSchema = z.object({
     .describe(
       'Provides an estimated reading time in minutes. To auto-generate, delete the field; to hide it on the page, enter 0'
     ),
-  radio: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Indicates if the post includes audio content or links to an external audio source. If `true`, an icon will be added to the post item in the list.'
-    ),
-  video: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Indicates if the post includes video content or links to an external video source. If `true`, an icon will be added to the post item in the list.'
-    ),
-  platform: z
-    .string()
-    .default('')
-    .describe(
-      'Specifies the platform where the audio or video content is published. If provided, the platform name will be displayed. If not needed, leave the field as an empty string or delete it.'
-    ),
+  radio: zFalse.describe(
+    'Indicates if the post includes audio content or links to an external audio source. If `true`, an icon will be added to the post item in the list.'
+  ),
+  video: zFalse.describe(
+    'Indicates if the post includes video content or links to an external video source. If `true`, an icon will be added to the post item in the list.'
+  ),
+  platform: zDefaultStr.describe(
+    'Specifies the platform where the audio or video content is published. If provided, the platform name will be displayed. If not needed, leave the field as an empty string or delete it.'
+  ),
   toc: z
     .boolean()
     .default(true)
@@ -120,12 +96,9 @@ export const postSchema = z.object({
     .url('Invalid url.')
     .optional()
     .describe('Defines a URL to redirect the post.'),
-  draft: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Marks the post as a draft. If `true`, it is only visible in development and excluded from production builds.'
-    ),
+  draft: zFalse.describe(
+    'Marks the post as a draft. If `true`, it is only visible in development and excluded from production builds.'
+  ),
 })
 
 export type PostSchema = z.infer<typeof postSchema>
@@ -134,14 +107,14 @@ export type PostSchema = z.infer<typeof postSchema>
 const projectSchema = z.object({
   name: z
     .string()
-    .describe('**Requirde**. Name of the project to be displayed.'),
+    .describe('**Required**. Name of the project to be displayed.'),
   link: z
     .string()
     .url('Invalid url.')
-    .describe('**Requirde**. URL linking to the project page or repository.'),
+    .describe('**Required**. URL linking to the project page or repository.'),
   desc: z
     .string()
-    .describe('**Requirde**. A brief description summarizing the project.'),
+    .describe('**Required**. A brief description summarizing the project.'),
   icon: z
     .string()
     .regex(
@@ -149,7 +122,7 @@ const projectSchema = z.object({
       'Icon must be in the format `i-<collection>-<icon>` or `i-<collection>:<icon>` as per [Unocss](https://unocss.dev/presets/icons) specs.'
     )
     .describe(
-      '**Requirde**. Icon representing the project. It must be in the format `i-<collection>-<icon>` or `i-<collection>:<icon>` as per [Unocss](https://unocss.dev/presets/icons) specs. [Check all available icons here](https://icones.js.org/).'
+      '**Required**. Icon representing the project. It must be in the format `i-<collection>-<icon>` or `i-<collection>:<icon>` as per [Unocss](https://unocss.dev/presets/icons) specs. [Check all available icons here](https://icones.js.org/).'
     ),
 })
 
@@ -165,32 +138,25 @@ export type ProjectsSchema = z.infer<typeof projectsSchema>
 
 /* Stremas */
 const streamSchema = z.object({
-  title: z.string().describe('**Requirde**. Sets the stream title.'),
+  title: z.string().describe('**Required**. Sets the stream title.'),
   pubDate: z.coerce
     .date()
     .describe(
-      '**Requirde**. Specifies the publication date. See supported formats [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#examples).'
+      '**Required**. Specifies the publication date. See supported formats [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#examples).'
     ),
   link: z
     .string()
     .url('Invalid url.')
-    .describe('**Requirde**. Specifies the URL link to the stream.'),
-  radio: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Indicates whether the stream is a radio broadcast. If `true`, an icon will be added to the stream item in the list.'
-    ),
-  video: z
-    .boolean()
-    .default(false)
-    .describe(
-      'Indicates whether the stream is a video broadcast. If `true`, an icon will be added to the stream item in the list.'
-    ),
-  platform: z
-    .string()
-    .default('')
-    .describe('Specifies the platform where the stream is published.'),
+    .describe('**Required**. Specifies the URL link to the stream.'),
+  radio: zFalse.describe(
+    'Indicates whether the stream is a radio broadcast. If `true`, an icon will be added to the stream item in the list.'
+  ),
+  video: zFalse.describe(
+    'Indicates whether the stream is a video broadcast. If `true`, an icon will be added to the stream item in the list.'
+  ),
+  platform: zDefaultStr.describe(
+    'Specifies the platform where the stream is published.'
+  ),
 })
 
 const streamGroupsSchema = z.array(streamSchema)

@@ -4,10 +4,9 @@
  */
 /// <reference types="mdast-util-directive" />
 
-import { visit } from 'unist-util-visit'
-
-import type { Root, Paragraph, PhrasingContent } from 'mdast'
 import type { MarkdownVFile } from '@astrojs/markdown-remark'
+import type { Paragraph, PhrasingContent,Root } from 'mdast'
+import { visit } from 'unist-util-visit'
 
 const IMAGE_DIR_REGEXP = /^image-(.*)/
 const VALID_TAGS_FOR_IMG = new Set<string>([

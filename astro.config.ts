@@ -1,12 +1,13 @@
-import { defineConfig } from 'astro/config'
-import sitemap from '@astrojs/sitemap'
-import robotsTxt from 'astro-robots-txt'
-import unocss from 'unocss/astro'
-import astroExpressiveCode from 'astro-expressive-code'
 import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import { defineConfig } from 'astro/config'
+import astroExpressiveCode from 'astro-expressive-code'
+import robotsTxt from 'astro-robots-txt'
+import Unocss from 'unocss/astro'
 
-import { remarkPlugins, rehypePlugins } from './plugins'
 import { SITE } from '#config.ts'
+
+import { rehypePlugins, remarkPlugins } from './plugins'
 
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     robotsTxt(),
-    unocss({
+    Unocss({
       // https://unocss.dev/integrations/astro#style-reset
       injectReset: true,
     }),
@@ -24,7 +25,7 @@ export default defineConfig({
   ],
   markdown: {
     syntaxHighlight: false,
-    remarkPlugins,
+    remarkPlugins: remarkPlugins,
     rehypePlugins,
   },
   experimental: {

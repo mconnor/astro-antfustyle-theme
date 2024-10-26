@@ -1,4 +1,4 @@
-import type { Site, Ui, Features } from './types'
+import type { Features,Site, Ui } from './types'
 
 export const SITE: Site = {
   website: 'https://astro-antfustyle-theme.vercel.app/',

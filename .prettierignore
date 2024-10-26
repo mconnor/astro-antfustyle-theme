@@ -8,3 +8,4 @@ dist/
 # environment variables
 .eslintcache
 node_modules/
+'**/*.md'

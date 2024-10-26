@@ -1,6 +1,7 @@
+import { feedLoader } from '@ascorbic/feed-loader'
 import { glob } from 'astro/loaders'
 import { defineCollection } from 'astro:content'
-import { feedLoader } from '@ascorbic/feed-loader'
+
 import { pageSchema, postSchema, projectsSchema, streamsSchema } from './schema'
 
 const pages = defineCollection({

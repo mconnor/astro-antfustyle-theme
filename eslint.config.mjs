@@ -1,9 +1,12 @@
-import globals from 'globals'
 import js from '@eslint/js'
+import markdown from '@eslint/markdown'
 import astroParser from 'astro-eslint-parser'
-import ts from 'typescript-eslint'
-import astro from 'eslint-plugin-astro'
 import prettier from 'eslint-config-prettier'
+import astro from 'eslint-plugin-astro'
+import * as regexpPlugin from 'eslint-plugin-regexp'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import globals from 'globals'
+import ts from 'typescript-eslint'
 
 export default ts.config(
   {
@@ -15,6 +18,8 @@ export default ts.config(
       '.github/',
       '.eslintcache',
       '.prettierignore',
+      'plugins/og-template',
+      '**/*.md',
     ],
   },
 
@@ -24,12 +29,11 @@ export default ts.config(
   // ...ts.configs.stylisticTypeChecked,
   ...ts.configs.recommended,
   ...ts.configs.stylistic,
+  regexpPlugin.configs['flat/recommended'],
 
   {
     // https://eslint.org/docs/latest/use/configure/language-options
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
       parser: ts.parser,
       parserOptions: {
         warnOnUnsupportedTypeScriptVersion: false,
@@ -39,7 +43,7 @@ export default ts.config(
       globals: {
         ...globals.browser,
 
-        // ...globals.node,
+        ...globals.node,
       },
     },
   },
@@ -82,6 +86,48 @@ export default ts.config(
         'error',
         { allowTernary: true },
       ],
+    },
+  },
+
+  {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
+    rules: {
+      'simple-import-sort/imports': 'warn',
+    },
+  },
+  {
+    // Apply the Markdown processor to all .md files
+    files: ['**/*.md'],
+    languageOptions: {
+      parserOptions: {
+        extraFileExtensions: ['.md'],
+      },
+    },
+
+    plugins: {
+      markdown,
+    },
+
+    rules: {
+      // Markdown rules
+      'markdown/fenced-code-language': 'warn', // Enforce language specification in fenced code blocks
+      'markdown/heading-increment': 'error', // Ensure heading levels increment by one
+      'markdown/no-duplicate-headings': 'warn', // Disallow duplicate headings in the same document
+      'markdown/no-empty-links': 'warn', // Disallow empty link elements
+      'markdown/no-html': 'error', // Disallow HTML in Markdown
+      'markdown/no-invalid-label-refs': 'error', // Disallow invalid label references
+      'markdown/no-missing-label-refs': 'error', // Disallow missing label references
+    },
+  },
+  {
+    files: ['**/*.md/*.js', '**/*.md/*.ts'],
+    extends: [ts.configs.disableTypeChecked],
+    rules: {
+      'no-console': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      // 'import/no-unresolved': 'warn',
     },
   },
   prettier

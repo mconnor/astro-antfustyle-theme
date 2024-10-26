@@ -4,11 +4,10 @@
  */
 /// <reference types="mdast-util-directive" />
 
-import { h } from 'hastscript'
-import { visit } from 'unist-util-visit'
-
-import type { Root } from 'mdast'
 import type { MarkdownVFile } from '@astrojs/markdown-remark'
+import { h } from 'hastscript'
+import type { Root } from 'mdast'
+import { visit } from 'unist-util-visit'
 
 type BadgePreset = Record<string, { text: string; color: string }>
 interface Config {
@@ -28,9 +27,9 @@ const VIDEO_PLATFORMS: Record<string, (id: string) => string> = {
 /* link */
 const FAVICON_BASE_URL = 'https://favicon.yandex.net/favicon/'
 const GITHUB_USERNAME_REGEXP =
-  /^@[a-zA-Z0-9](?!.*--)[a-zA-Z0-9-_]{0,37}[a-zA-Z0-9]$/
+  /^@[a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9]$/i
 const GITHUB_REPO_REGEXP =
-  /^(?:@)?([a-zA-Z0-9](?!.*--)[a-zA-Z0-9-_]{0,37}[a-zA-Z0-9])\/.*$/
+  /^@?([a-z0-9](?!.*--)[\w-]{0,37}[a-z0-9])\/.*$/i
 const LINK_STYLE = ['square', 'rounded', 'github'] as const
 const TAB_ORG_REGEXP = /^org-(\w+)$/
 const GITHUB_TAB = [
