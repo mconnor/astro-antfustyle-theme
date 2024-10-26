@@ -12,7 +12,7 @@ This post introduces some handy tricks for using special syntax in the [Astro An
 
 ## Callouts (Alerts / Admonitions)
 
-Supported by :link[rehype-callouts]{id=lin-stephanie/rehype-callouts style='github'}, you can modify [the plugin's configuration](https://github.com/lin-stephanie/rehype-callouts?tab=readme-ov-file#options-useroptions) in `plugins/index.ts`. 
+Supported by :link[rehype-callouts]{id=lin-stephanie/rehype-callouts style='github'}, you can modify [the plugin's configuration](https://github.com/lin-stephanie/rehype-callouts?tab=readme-ov-file#options-useroptions) in `plugins/index.ts`.
 
 If you change the `theme` configuration (default: `'vitepress'`), you will also need to update the imported CSS file in `src/styles/markdown.css` (`@import 'rehype-callouts/theme/yourconfig'`).
 
@@ -25,7 +25,7 @@ If you change the `theme` configuration (default: `'vitepress'`), you will also 
 > [!note]
 > Highlights information that users should take into account, even when skimming.
 
-> [!TIP] You can customize the `title`！ 
+> [!TIP] You can customize the `title`！
 > Optional information to help a user be more successful.
 
 > [!Important] This is a **non-collapsible** callout
@@ -34,9 +34,9 @@ If you change the `theme` configuration (default: `'vitepress'`), you will also 
 > [!Warning]- This is a _collapsible and nested_ callout
 >
 > Critical content demanding immediate user attention due to potential risks.
-> 
+>
 > > [!caution]
-> > 
+> >
 > > Negative potential consequences of an action.
 ```
 
@@ -58,7 +58,7 @@ If you change the `theme` configuration (default: `'vitepress'`), you will also 
 
 ## Fully-featured Code Blocks
 
-Supported by :link[astro-expressive-code]{link=https://github.com/expressive-code/expressive-code/tree/main/packages/astro-expressive-code imageUrl='https://avatars.githubusercontent.com/u/124694388'} with :link[plugin-collapsible-sections]{id=@expressive-code/plugin-collapsible-sections style=github} and :link[plugin-line-numbers]{id=@expressive-code/plugin-line-numbers style=github} plugins to add styling and extra functionality for code blocks. 
+Supported by :link[astro-expressive-code]{link=https://github.com/expressive-code/expressive-code/tree/main/packages/astro-expressive-code imageUrl='https://avatars.githubusercontent.com/u/124694388'} with :link[plugin-collapsible-sections]{id=@expressive-code/plugin-collapsible-sections style=github} and :link[plugin-line-numbers]{id=@expressive-code/plugin-line-numbers style=github} plugins to add styling and extra functionality for code blocks.
 
 To customize code block themes or functionality, modify the `ec.config.mjs` file at the project root after reviewing the [Configuring Expressive Code](https://expressive-code.com/reference/configuration/), such as [change themes](https://expressive-code.com/guides/themes/#using-bundled-themes), [enable word wrap](https://expressive-code.com/key-features/word-wrap/#wrap), or [toggle line numbers](https://expressive-code.com/plugins/line-numbers/#showlinenumbers).
 
@@ -290,7 +290,7 @@ console.log('Greetings from line 5!')
 console.log('I am on line 6')
 ```
 
-## Image Caption & Link 
+## Image Caption & Link
 
 Build on :link[remark-directive]{id=remark/remark-directive style='github'} with a custom `remark-image-container` plugin (located in `plugins/remark-image-container.ts`) to quickly add image captions，links and more.
 
@@ -311,30 +311,30 @@ The custom directive creates a block with an image, figcaption, and optional sty
 :::
 
 :::image-figure[This is a **figcaption** with _`<img>` attrs_.]
-![](~/assets/markdown-mdx-extended-featurs/og-image.png)(width:600)
+![](#assets/markdown-mdx-extended-featurs/og-image.png)(width:600)
 :::
 
 <!-- 💡 Use `(class:no-zoom)` to disable zoom -->
 :::image-figure[This is a **figcaption** with `class:no-zoom`.]
-![](~/assets/markdown-mdx-extended-featurs/og-image.png)(class:no-zoom)
+![](#assets/markdown-mdx-extended-featurs/og-image.png)(class:no-zoom)
 :::
 
 <!-- 💡 If no `[caption]`, use alt text as figcaption. -->
 :::image-figure
-![If [caption] not set, the alt text from ![]() will be used as the figcaption.](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![If [caption] not set, the alt text from ![]() will be used as the figcaption.](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 
 <!-- 💡 Images for light (img-light) and dark (img-dark) modes -->
 <!-- ⚠️ At least one line must separate two image syntaxes (![]()), or won't work. -->
 :::image-figure[This example shows different images for light (add `class:img-light`) and dark (add `class:img-dark`) modes.]
-![](~/assets/markdown-mdx-extended-featurs/rose-dark.png)(class:img-light)
+![](#assets/markdown-mdx-extended-featurs/rose-dark.png)(class:img-light)
 
-![](~/assets/markdown-mdx-extended-featurs/plum-light.png)(class:img-dark)
+![](#assets/markdown-mdx-extended-featurs/plum-light.png)(class:img-dark)
 :::
 
 <!-- ❌ If no text is available for the figcaption, it won't work.  -->
 :::image-figure
-![](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 ```
 
@@ -343,21 +343,21 @@ The custom directive creates a block with an image, figcaption, and optional sty
 :::
 
 :::image-figure[This is a **figcaption** with _`<img>` attrs_.]
-![](~/assets/markdown-mdx-extended-featurs/og-image.png)(width:600)
+![](#assets/markdown-mdx-extended-featurs/og-image.png)(width:600)
 :::
 
 :::image-figure[This is a **figcaption** with `class:no-zoom`.]
-![](~/assets/markdown-mdx-extended-featurs/og-image.png)(class:no-zoom)
+![](#assets/markdown-mdx-extended-featurs/og-image.png)(class:no-zoom)
 :::
 
 :::image-figure
-![If [caption] not set, the alt text from ![]() will be used as the figcaption.](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![If [caption] not set, the alt text from ![]() will be used as the figcaption.](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 
 :::image-figure[This example shows different images for light (add `class:img-light`) and dark (add `class:img-dark`) modes.]
-![](~/assets/markdown-mdx-extended-featurs/rose-dark.png)(class:img-light)
+![](#assets/markdown-mdx-extended-featurs/rose-dark.png)(class:img-light)
 
-![](~/assets/markdown-mdx-extended-featurs/plum-light.png)(class:img-dark)
+![](#assets/markdown-mdx-extended-featurs/plum-light.png)(class:img-dark)
 :::
 
 ### `:::image-a`
@@ -370,36 +370,36 @@ The custom directive wraps an image inside a link, making it clickable.
 
 ```md title=':::image-a.md'
 :::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme"}
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 
 :::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme" style="display:block" .custom-class}
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)(style: margin-bottom: -1rem; transform:scaleX(1.1) scaleY(1.1);, loading: eager)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)(style: margin-bottom: -1rem; transform:scaleX(1.1) scaleY(1.1);, loading: eager)
 :::
 
 ::::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme"}
 :::image-figure[This example shows `:::image-a` wraps around `:::image-figure` (both are interchangeable).]
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 ::::
 
 <!-- ❌ No external links provided, it won't work.-->
 :::image-a
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 ```
 
 :::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme"}
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 
 :::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme" style="display:block" .custom-class}
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)(style: margin-bottom: 2rem; transform:scaleX(1.1) scaleY(1.1);, loading: eager)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)(style: margin-bottom: 2rem; transform:scaleX(1.1) scaleY(1.1);, loading: eager)
 :::
 
 ::::image-a{href="https://github.com/lin-stephanie/astro-antfustyle-theme"}
 :::image-figure[This example shows `:::image-a` wraps around `:::image-figure` (both are interchangeable).]
-![OG image](~/assets/markdown-mdx-extended-featurs/og-image.png)
+![OG image](#assets/markdown-mdx-extended-featurs/og-image.png)
 :::
 ::::
 
@@ -439,7 +439,7 @@ The custom `:link` directive simplifies the process of creating styled links to 
 
 **Basic Syntax**
 
-Use `:link` with display text in square brackets and `id` parameter (or shorthand with a `#` prefix) in curly braces.  
+Use `:link` with display text in square brackets and `id` parameter (or shorthand with a `#` prefix) in curly braces.
 
 **Example 1**: `:link[Astro]{#withastro/astro}` or `:link[Astro]{id=withastro/astro}` creates a link to :link[Astro]{#withastro/astro} repo.
 
@@ -449,7 +449,7 @@ Use `:link` with display text in square brackets and `id` parameter (or shorthan
 
 > [!important]
 > When linking to a GitHub user or organization, you must prepend the `id` with `@`.
-> 
+>
 > If the `[]` part is omitted, the link will display the text of the `id` parameter by default.
 
 **Specific Subsections**
